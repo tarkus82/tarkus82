@@ -3,7 +3,7 @@
 // overall save the current selected window
 var g_iWndIndex = 0; //don't have to set the variable; default to use the current selected window without transmiting value when the interface has window parameters
 $(function () {
-    // check the installation status of plugin 
+    // check the installation status of plugin
     var iRet = WebVideoCtrl.I_CheckPluginInstall();
     if (-1 == iRet) {
         alert("If the plugin is uninstalled, please install the WebComponentsKit.exe!");
@@ -23,11 +23,11 @@ $(function () {
         },
         cbDoubleClickWnd: function (iWndIndex, bFullScreen) {
             var szInfo = "present window number to zoom: " + iWndIndex;
-            if (!bFullScreen) {            
+            if (!bFullScreen) {
                 szInfo = "present window number to restore: " + iWndIndex;
             }
             showCBInfo(szInfo);
-                        
+
             // you can handle the single window bit stream switching here
             /*if (bFullScreen) {
                 clickStartRealPlay(1);
@@ -145,7 +145,7 @@ function getWindowSize() {
     return {width: nWidth, height: nHeight};
 }
 
-// open option dialog 0: folder, 1: file 
+// open option dialog 0: folder, 1: file
     function clickOpenFileDlg(id, iType) {
         WebVideoCtrl.I2_OpenFileDlg(iType).then(function(szDirPath){
             if (szDirPath != -1 && szDirPath != "" && szDirPath != null) {
@@ -153,7 +153,7 @@ function getWindowSize() {
             }
         });
     // var szDirPath = WebVideoCtrl.I_OpenFileDlg(iType);
-    
+
     // if (szDirPath != -1 && szDirPath != "" && szDirPath != null) {
     //     $("#" + id).val(szDirPath);
     // }
@@ -187,7 +187,7 @@ function clickGetLocalCfg() {
 function clickSetLocalCfg() {
     var arrXml = [],
         szInfo = "";
-    
+
     arrXml.push("<LocalConfigInfo>");
     arrXml.push("<PackgeSize>" + $("#packSize").val() + "</PackgeSize>");
     arrXml.push("<PlayWndType>" + $("#wndSize").val() + "</PlayWndType>");
@@ -196,7 +196,7 @@ function clickSetLocalCfg() {
     arrXml.push("<CapturePath>" + $("#previewPicPath").val() + "</CapturePath>");
     arrXml.push("<PlaybackFilePath>" + $("#playbackFilePath").val() + "</PlaybackFilePath>");
     arrXml.push("<PlaybackPicPath>" + $("#playbackPicPath").val() + "</PlaybackPicPath>");
-    arrXml.push("<DeviceCapturePath>" + $("#devicePicPath").val() + "</DeviceCapturePath>");    
+    arrXml.push("<DeviceCapturePath>" + $("#devicePicPath").val() + "</DeviceCapturePath>");
     arrXml.push("<DownloadPath>" + $("#downloadPath").val() + "</DownloadPath>");
     arrXml.push("<IVSMode>" + $("#rulesInfo").val() + "</IVSMode>");
     arrXml.push("<CaptureFileFormat>" + $("#captureFileFormat").val() + "</CaptureFileFormat>");
@@ -254,7 +254,7 @@ function clickLogin() {
         //             clickStopRealPlay();
         //         }, 900);
         //     },1000);
-          
+
         },
         error: function (status, xmlDoc) {
             showOPInfo(szDeviceIdentify + " login failed！", status, xmlDoc);
@@ -306,7 +306,7 @@ function clickGetDeviceInfo() {
             arrStr.push("MAC address：" + $(xmlDoc).find("macAddress").eq(0).text() + "\r\n");
             arrStr.push("firmware version：" + $(xmlDoc).find("firmwareVersion").eq(0).text() + " " + $(xmlDoc).find("firmwareReleasedDate").eq(0).text() + "\r\n");
             arrStr.push("encoder version：" + $(xmlDoc).find("encoderVersion").eq(0).text() + " " + $(xmlDoc).find("encoderReleasedDate").eq(0).text() + "\r\n");
-            
+
             showOPInfo(szDeviceIdentify + " get deivce info success！");
             alert(arrStr.join(""));
         },
@@ -374,7 +374,7 @@ function getChannelInfo() {
         async: false,
         success: function (xmlDoc) {
             var oChannels = $(xmlDoc).find("ZeroVideoChannel");
-            
+
             $.each(oChannels, function (i) {
                 var id = $(this).find("id").eq(0).text(),
                     name = $(this).find("name").eq(0).text();
@@ -430,7 +430,7 @@ function clickGetDigitalChannelInfo() {
             iAnalogChannelNum = $(xmlDoc).find("VideoInputChannel").length;
         },
         error: function () {
-            
+
         }
     });
 
@@ -439,7 +439,7 @@ function clickGetDigitalChannelInfo() {
         async: false,
         success: function (xmlDoc) {
             var oChannels = $(xmlDoc).find("InputProxyChannelStatus");
-            
+
             $.each(oChannels, function () {
                 var id = parseInt($(this).find("id").eq(0).text(), 10),
                     ipAddress = $(this).find("ipAddress").eq(0).text(),
@@ -447,7 +447,7 @@ function clickGetDigitalChannelInfo() {
                     managePortNo = $(this).find("managePortNo").eq(0).text(),
                     online = $(this).find("online").eq(0).text(),
                     proxyProtocol = $(this).find("proxyProtocol").eq(0).text();
-                            
+
                 var objTr = $("#digitalchannellist").get(0).insertRow(-1);
                 var objTd = objTr.insertCell(0);
                 objTd.innerHTML = (id - iAnalogChannelNum) < 10 ? "D0" + (id - iAnalogChannelNum) : "D" + (id - iAnalogChannelNum);
@@ -547,7 +547,7 @@ function setTextOverlay() {
                 showOPInfo(szDeviceIdentify + " " + szInfo);
                 }
             };
-           
+
             WebVideoCtrl.I_SendHTTPRequest(szDeviceIdentify,szUrl,newOptions);
         },
         error:function(){
@@ -649,7 +649,7 @@ function clickCapturePic() {
 
         var szChannelID = $("#channels").val();
         var szPicName = oWndInfo.szDeviceIdentify + "_" + szChannelID + "_" + new Date().getTime();
-        
+
         szPicName += ("0" === szCaptureFileFormat) ? ".jpg": ".bmp";
 
         var iRet = WebVideoCtrl.I_CapturePic(szPicName, {
@@ -886,10 +886,10 @@ function mouseDownPTZControl(iPTZIndex) {
         bZeroChannel = $("#channels option").eq($("#channels").get(0).selectedIndex).attr("bZero") == "true" ? true : false,
         iPTZSpeed = $("#ptzspeed").val();
 
-    if (bZeroChannel) {// zero-channel does not support PTZ 
+    if (bZeroChannel) {// zero-channel does not support PTZ
         return;
     }
-    
+
     if (oWndInfo != null) {
         if (9 == iPTZIndex && g_bPTZAuto) {
             iPTZSpeed = 0;// you can close auto mode by setting speed to 0 when auto is start already
@@ -916,7 +916,7 @@ function mouseDownPTZControl(iPTZIndex) {
     }
 }
 
-// stop PTZ direction 
+// stop PTZ direction
 function mouseUpPTZControl() {
     var oWndInfo = WebVideoCtrl.I_GetWindowStatus(g_iWndIndex);
 
@@ -997,7 +997,7 @@ function clickRecordSearch(iType) {
         iSearchPos: g_iSearchTimes * 40,
         success: function (xmlDoc) {
             if("MORE" === $(xmlDoc).find("responseStatusStrg").eq(0).text()) {
-                
+
                 for(var i = 0, nLen = $(xmlDoc).find("searchMatchItem").length; i < nLen; i++) {
                     var szPlaybackURI = $(xmlDoc).find("playbackURI").eq(i).text();
                     if(szPlaybackURI.indexOf("name=") < 0) {
@@ -1320,7 +1320,7 @@ function clickPlayFast() {
 // OSD time
 function clickGetOSDTime() {
     var oWndInfo = WebVideoCtrl.I_GetWindowStatus(g_iWndIndex);
-    
+
     if (oWndInfo != null) {
         var szTime = WebVideoCtrl.I_GetOSDTime({
             success: function (szOSDTime) {
@@ -1614,7 +1614,7 @@ function clickRemoteConfig() {
     var szDeviceIdentify = $("#ip").val(),
         iDevicePort = parseInt($("#deviceport").val(), 10) || "",
         szInfo = "";
-    
+
     if (null == szDeviceIdentify) {
         return;
     }
@@ -2062,8 +2062,8 @@ function clickDeviceCapturePic() {
     if (null == szDeviceIdentify) {
         return;
     }
-    
-    if (bZeroChannel) {// zero channel do not support device capturing 
+
+    if (bZeroChannel) {// zero channel do not support device capturing
         return;
     }
 

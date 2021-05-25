@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -55,7 +56,7 @@
             </td>
             <td>
               Split screen&nbsp;
-              <select class="sel2" onchange="changeWndNum(this.value);">
+              <select class="sel2" onchange="videonode.changeWndNum(this.value);">
                 <option value="1" selected>1x1</option>
                 <option value="2">2x2</option>
                 <option value="3">3x3</option>
@@ -75,19 +76,19 @@
                 type="button"
                 class="btn"
                 value="Login"
-                onclick="clickLogin();"
+                onclick="videonode.clickLogin();"
               />
               <input
                 type="button"
                 class="btn"
                 value="Logout"
-                onclick="clickLogout();"
+                onclick="videonode.clickLogout();"
               />
               <input
                 type="button"
                 class="btn2"
                 value="Get basic info"
-                onclick="clickGetDeviceInfo();"
+                onclick="videonode.clickGetDeviceInfo();"
               />
             </td>
           </tr>
@@ -97,7 +98,7 @@
               <select
                 id="ip"
                 class="sel"
-                onchange="getChannelInfo();getDevicePort();"
+                onchange="videonode.getChannelInfo();videonode.getDevicePort();"
               ></select>
             </td>
             <td class="tt">Channel list</td>
@@ -111,7 +112,7 @@
                 type="button"
                 class="btn2"
                 value="Start preview"
-                onclick="clickStartRealPlay();"
+                onclick="videonode.clickStartRealPlay();"
               />
             </td>
             <td>
@@ -119,7 +120,7 @@
                 type="button"
                 class="btn2"
                 value="Stop preview"
-                onclick="clickStopRealPlay();"
+                onclick="videonode.clickStopRealPlay();"
               />
             </td>
             <td>
@@ -127,7 +128,7 @@
                 type="button"
                 class="btn2"
                 value="set osd"
-                onclick="setTextOverlay();"
+                onclick="videonode.setTextOverlay();"
               />
             </td>
           </tr>
@@ -142,7 +143,7 @@
                 type="button"
                 class="btn"
                 value="Get digital channel list"
-                onclick="clickGetDigitalChannelInfo();"
+                onclick="videonode.clickGetDigitalChannelInfo();"
               />
             </td>
           </tr>
@@ -227,7 +228,7 @@
                 type="button"
                 class="btn"
                 value="Browse"
-                onclick="clickOpenFileDlg('recordPath', 0);"
+                onclick="videonode.clickOpenFileDlg('recordPath', 0);"
               />
             </td>
           </tr>
@@ -238,7 +239,7 @@
                 type="button"
                 class="btn"
                 value="Browse"
-                onclick="clickOpenFileDlg('downloadPath', 0);"
+                onclick="videonode.clickOpenFileDlg('downloadPath', 0);"
               />
             </td>
           </tr>
@@ -249,7 +250,7 @@
                 type="button"
                 class="btn"
                 value="Browse"
-                onclick="clickOpenFileDlg('previewPicPath', 0);"
+                onclick="videonode.clickOpenFileDlg('previewPicPath', 0);"
               />
             </td>
           </tr>
@@ -264,7 +265,7 @@
                 type="button"
                 class="btn"
                 value="Browse"
-                onclick="clickOpenFileDlg('playbackPicPath', 0);"
+                onclick="videonode.clickOpenFileDlg('playbackPicPath', 0);"
               />
             </td>
           </tr>
@@ -279,7 +280,7 @@
                 type="button"
                 class="btn"
                 value="Browse"
-                onclick="clickOpenFileDlg('playbackFilePath', 0);"
+                onclick="videonode.clickOpenFileDlg('playbackFilePath', 0);"
               />
             </td>
           </tr>
@@ -290,7 +291,7 @@
                 type="button"
                 class="btn"
                 value="Browse"
-                onclick="clickOpenFileDlg('devicePicPath', 0);"
+                onclick="videonode.clickOpenFileDlg('devicePicPath', 0);"
               />
             </td>
           </tr>
@@ -300,12 +301,12 @@
                 type="button"
                 class="btn"
                 value="Get"
-                onclick="clickGetLocalCfg();"
+                onclick="videonode.clickGetLocalCfg();"
               />&nbsp;<input
                 type="button"
                 class="btn"
                 value="Set"
-                onclick="clickSetLocalCfg();"
+                onclick="videonode.clickSetLocalCfg();"
               />
             </td>
           </tr>
@@ -340,7 +341,7 @@
                 type="button"
                 class="btn"
                 value="Set"
-                onclick="clickSetVolume();"
+                onclick="videonode.clickSetVolume();"
               />(Range：0~100)
             </td>
             <td>
@@ -348,13 +349,13 @@
                 type="button"
                 class="btn"
                 value="Audio On"
-                onclick="clickOpenSound();"
+                onclick="videonode.clickOpenSound();"
               />
               <input
                 type="button"
                 class="btn"
                 value="Audio Off"
-                onclick="clickCloseSound();"
+                onclick="videonode.clickCloseSound();"
               />
             </td>
           </tr>
@@ -366,7 +367,7 @@
                 type="button"
                 class="btn"
                 value="Get channel"
-                onclick="clickGetAudioInfo();"
+                onclick="videonode.clickGetAudioInfo();"
               />
             </td>
             <td>
@@ -374,13 +375,13 @@
                 type="button"
                 class="btn"
                 value="Voice Talk"
-                onclick="clickStartVoiceTalk();"
+                onclick="videonode.clickStartVoiceTalk();"
               />
               <input
                 type="button"
                 class="btn"
                 value="Stop Voice Talk"
-                onclick="clickStopVoiceTalk();"
+                onclick="videonode.clickStopVoiceTalk();"
               />
             </td>
           </tr>
@@ -390,25 +391,25 @@
                 type="button"
                 class="btn2"
                 value="Capture"
-                onclick="clickCapturePic();"
+                onclick="videonode.clickCapturePic();"
               />
               <input
                 type="button"
                 class="btn"
                 value="capture onload"
-                onclick="clickCapturePicData();"
+                onclick="videonode.clickCapturePicData();"
               />
               <input
                 type="button"
                 class="btn2"
                 value="Start recording"
-                onclick="clickStartRecord('realplay');"
+                onclick="videonode.clickStartRecord('realplay');"
               />
               <input
                 type="button"
                 class="btn2"
                 value="Stop recording"
-                onclick="clickStopRecord('realplay');"
+                onclick="videonode.clickStopRecord('realplay');"
               />
             </td>
           </tr>
@@ -418,13 +419,13 @@
                 type="button"
                 class="btn2"
                 value="Enable E zoom"
-                onclick="clickEnableEZoom();"
+                onclick="videonode.clickEnableEZoom();"
               />
               <input
                 type="button"
                 class="btn2"
                 value="Disable E zoom"
-                onclick="clickDisableEZoom();"
+                onclick="videonode.clickDisableEZoom();"
               />
               <input
                 type="button"
